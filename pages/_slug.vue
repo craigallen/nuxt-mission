@@ -3,6 +3,7 @@
     <div>
       <img :src="planet.image" alt="" />
       <h1 class="title">{{ planet.title }}</h1>
+      <PlanetsList />
     </div>
   </div>
 </template>
