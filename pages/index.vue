@@ -3,11 +3,27 @@
     <div>
       <Logo />
       <h1 class="title">Home</h1>
-      <PlanetsList />
+      <button @click="showPlanets">Show Planets</button>
+      <div v-if="show">
+        <LazyPlanetsList />
+      </div>
     </div>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      show: false,
+    }
+  },
+  methods: {
+    showPlanets() {
+      this.show = true
+    },
+  },
+}
+</script>
 <style>
 ul {
   list-style-type: none;
