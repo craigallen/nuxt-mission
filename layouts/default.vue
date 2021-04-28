@@ -1,9 +1,19 @@
 <template>
   <div>
+    <nav>
+      <NuxtLink to="/">Home</NuxtLink>
+      <NuxtLink to="/about">About</NuxtLink>
+    </nav>
     <Nuxt />
   </div>
 </template>
-
+<script>
+export default {
+  head: {
+    title: 'Nuxt Mission',
+  },
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -51,5 +61,9 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+nav {
+  text-align: center;
 }
 </style>

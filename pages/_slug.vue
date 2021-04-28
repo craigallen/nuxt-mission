@@ -1,17 +1,53 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
-      <h1 class="title">{{</h1>
+      <img :src="planet.image" alt="" />
+      <h1 class="title">{{ planet.title }}</h1>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  head() {
+    return {
+      title: this.planet.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.planet.description,
+        },
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `https://jamstack-explorers-nuxt-mission/${this.$route.params.slug}`,
+        },
+      ],
+    }
+  },
+  async asyncData({ params }) {
+    const planet = await fetch(
+      `https://api.nuxtjs.dev/planets/${params.slug}`
+    ).then((res) => res.json())
+    return { planet }
+  },
+}
 </script>
-
+<style scoped>
+h1 {
+  font-family: Nunito, sans-serif;
+}
+</style>
 <style>
+img {
+  height: 80px;
+  width: auto;
+  object-fit: cover;
+}
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
